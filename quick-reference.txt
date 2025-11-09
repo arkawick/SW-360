@@ -1,0 +1,45 @@
+# SW360 License Curation - Quick Reference
+
+## Current Location: C:\Users\Arkajyoti\Desktop\SW360
+
+## Files Created:
+1. powershell-commands.md       - PowerShell/Windows commands
+2. SETUP_SUMMARY.md             - Complete setup documentation
+3. sw360-license-curation-guide.md - REST API guide
+4. linux-wsl-commands.sh        - Bash script with helper functions
+5. quick-reference.txt          - This file
+
+## Quick Commands (Git Bash/Linux/WSL):
+
+# List all licenses
+curl -s -u admin:password "http://localhost:5984/sw360db/_find" \
+  -H "Content-Type: application/json" \
+  -d '{"selector":{"type":"license"}}'
+
+# Create a license
+curl -X POST -u admin:password "http://localhost:5984/sw360db" \
+  -H "Content-Type: application/json" \
+  -d '{"type":"license","fullName":"GPL-3.0","shortName":"GPL-3.0","OSIApproved":true,"checked":false}'
+
+# Get specific license
+curl -s -u admin:password "http://localhost:5984/sw360db/LICENSE_ID"
+
+# Update license
+curl -X PUT -u admin:password "http://localhost:5984/sw360db/LICENSE_ID" \
+  -H "Content-Type: application/json" \
+  -d '{"_rev":"REV","type":"license","fullName":"Updated","checked":true}'
+
+## Using the Helper Script:
+
+source linux-wsl-commands.sh
+create_license "BSD 3-Clause" "BSD-3-Clause" "License text here"
+get_license "1301e495e309a30f9e304974aa000fe2"
+count_licenses
+
+## CouchDB Web Interface:
+http://localhost:5984/_utils
+Login: admin / password
+
+## Currently Have 2 Licenses:
+1. MIT License (ID: 1301e495e309a30f9e304974aa000fe2)
+2. Apache License 2.0 (ID: 1301e495e309a30f9e304974aa001650)

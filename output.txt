@@ -1,0 +1,46 @@
+=== Testing CouchDB Connection ===
+{"couchdb":"Welcome","version":"3.5.0","git_sha":"11f0d3643","uuid":"b52bd8e78f8fb058ae72aa212d4fba0a","features":["access-ready","partitioned","pluggable-storage-engines","reshard","scheduler"],"vendor":{"name":"The Apache Software Foundation"}}
+
+
+=== List All Databases ===
+["sw360attachments","sw360changelogs","sw360config","sw360db","sw360oauthclients","sw360spdx","sw360users","sw360vm"]
+
+
+=== Query All Licenses ===
+{"docs":[
+{"_id":"1301e495e309a30f9e304974aa000fe2","_rev":"2-b7a670951e704bde51f232232c43b745","type":"license","fullName":"MIT License","shortName":"MIT","text":"MIT License - Full Text: Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files...","OSIApproved":true,"checked":true},
+{"_id":"1301e495e309a30f9e304974aa001650","_rev":"1-de0659565d007962744a27e4460695dc","type":"license","fullName":"Apache License 2.0","shortName":"Apache-2.0","text":"Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License.","OSIApproved":true,"checked":false}
+],
+"bookmark": "g1AAAAB2eJzLYWBgYMpgSmHgKy5JLCrJTq2MT8lPzkzJBYorGBobGKaaWJqmGhtYJhobpFkCGSaW5iaJiQYGhmamBiB9HDB9OUAdjERpy8oCAOMGHUg"}
+
+
+
+=== Query Licenses (Limit 5) ===
+{"docs":[
+{"_id":"1301e495e309a30f9e304974aa000fe2","_rev":"2-b7a670951e704bde51f232232c43b745","type":"license","fullName":"MIT License","shortName":"MIT","text":"MIT License - Full Text: Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files...","OSIApproved":true,"checked":true},
+{"_id":"1301e495e309a30f9e304974aa001650","_rev":"1-de0659565d007962744a27e4460695dc","type":"license","fullName":"Apache License 2.0","shortName":"Apache-2.0","text":"Licensed under the Apache License, Version 2.0 (the License); you may not use this file except in compliance with the License.","OSIApproved":true,"checked":false}
+],
+"bookmark": "g1AAAAB2eJzLYWBgYMpgSmHgKy5JLCrJTq2MT8lPzkzJBYorGBobGKaaWJqmGhtYJhobpFkCGSaW5iaJiQYGhmamBiB9HDB9OUAdjERpy8oCAOMGHUg"}
+
+
+
+SW360 License Curation Helper Script
+=====================================
+
+Functions available:
+  create_license <fullname> <shortname> <text>
+  get_license <license_id>
+  update_license <license_id> <rev> <fullname> <shortname> <text>
+  delete_license <license_id> <rev>
+  find_by_shortname <shortname>
+  get_checked_licenses
+  get_osi_licenses
+  count_licenses
+  list_licenses_pretty
+
+Examples:
+  source linux-wsl-commands.sh
+  create_license 'BSD 3-Clause' 'BSD-3-Clause' 'Redistribution and use...'
+  get_license '1301e495e309a30f9e304974aa000fe2'
+  find_by_shortname 'MIT'
+  count_licenses

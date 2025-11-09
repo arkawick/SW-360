@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git clone:*)",
+      "Bash(cat:*)",
+      "WebSearch",
+      "Bash(./docker_build.sh:*)",
+      "Bash(docker --version:*)",
+      "Bash(docker compose:*)",
+      "Bash(node --version:*)",
+      "Bash(pnpm --version:*)",
+      "Bash(pnpm install:*)",
+      "Bash(docker rm:*)",
+      "Bash(docker logs:*)",
+      "Bash(curl:*)",
+      "Bash(pnpm dev)",
+      "Bash(npx next dev:*)",
+      "Bash(docker exec:*)",
+      "Bash(bash scripts/addUnsafeDefaultClient.sh:*)",
+      "Bash(where:*)",
+      "Bash(nul)",
+      "Bash(docker restart:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill /F /PID 10824 2)",
+      "Bash(taskkill:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(docker stop:*)",
+      "WebFetch(domain:eclipse.dev)",
+      "Bash(docker ps:*)",
+      "Bash(curl.exe:*)",
+      "Bash(chmod:*)",
+      "Bash(python sw360_license_manager.py:*)",
+      "Bash(python example_usage.py:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
