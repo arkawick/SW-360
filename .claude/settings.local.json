@@ -31,7 +31,9 @@
       "Bash(curl.exe:*)",
       "Bash(chmod:*)",
       "Bash(python sw360_license_manager.py:*)",
-      "Bash(python example_usage.py:*)"
+      "Bash(python example_usage.py:*)",
+      "Bash($null)",
+      "Bash(python:*)"
     ],
     "deny": [],
     "ask": []

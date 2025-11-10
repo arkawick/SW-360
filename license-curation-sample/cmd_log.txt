@@ -1,0 +1,337 @@
+PS C:\Users\Arkajyoti\Downloads\SW-360> curl.exe -u admin:password http://localhost:5984/_all_dbs
+["sw360attachments","sw360changelogs","sw360config","sw360db","sw360oauthclients","sw360spdx","sw360users","sw360vm"]
+PS C:\Users\Arkajyoti\Downloads\SW-360> cd .\license-curation-sample\
+PS C:\Users\Arkajyoti\Downloads\SW-360\license-curation-sample> py .\01_basic_operations.py
+
+============================================================
+  License Curation - Basic Operations Demo
+============================================================
+
+[1] Initializing SW360 License Manager...
+[OK] Connected to CouchDB successfully!
+
+
+============================================================
+  STEP 1: Checking for existing license
+============================================================
+
+[INFO] License 'BSD-2-Clause' already exists in database
+[INFO] Found 1 matching license(s)
+  ID:           1301e495e309a30f9e304974aa00571c
+  Revision:     2-96b68b9d07fec2f4b48878d8889d83a0
+  Short Name:   BSD-2-Clause
+  Full Name:    BSD 2-Clause 'Simplified' License
+  OSI Approved: True
+  Checked:      True
+  Text Preview: Redistribution and use in source and binary forms, with or without modification,...
+
+============================================================
+  STEP 3: Retrieving license details
+============================================================
+
+[*] Fetching license by ID: 1301e495e309a30f9e304974aa00571c
+[OK] License retrieved successfully!
+  ID:           1301e495e309a30f9e304974aa00571c
+  Revision:     2-96b68b9d07fec2f4b48878d8889d83a0
+  Short Name:   BSD-2-Clause
+  Full Name:    BSD 2-Clause 'Simplified' License
+  OSI Approved: True
+  Checked:      True
+  Text Preview: Redistribution and use in source and binary forms, with or without modification,...
+
+============================================================
+  STEP 4: Searching licenses by short name
+============================================================
+
+[*] Searching for: BSD-2-Clause
+[OK] Found 1 matching license(s)
+
+  Result 1:
+  ID:           1301e495e309a30f9e304974aa00571c
+  Revision:     2-96b68b9d07fec2f4b48878d8889d83a0
+  Short Name:   BSD-2-Clause
+  Full Name:    BSD 2-Clause 'Simplified' License
+  OSI Approved: True
+  Checked:      True
+  Text Preview: Redistribution and use in source and binary forms, with or without modification,...
+
+============================================================
+  STEP 5: Updating license (marking as checked)
+============================================================
+
+[*] Current status: Checked = True
+[*] Marking license as checked/reviewed...
+[OK] License updated successfully!
+    New Revision: 3-f92227c68cf4afec8e5b13a948189907
+[OK] Verified: Checked = True
+
+============================================================
+  STEP 6: Database Statistics
+============================================================
+
+  Total Licenses:        13
+  OSI Approved:          11
+  Checked/Reviewed:      13
+  Pending Review:        0
+
+============================================================
+  OPTIONAL: License Deletion
+============================================================
+
+[INFO] License deletion is available but commented out in this demo
+[INFO] To delete a license, uncomment the following code:
+[INFO]   manager.delete_license('1301e495e309a30f9e304974aa00571c', '<current_rev>')
+
+============================================================
+  Demo Completed Successfully!
+============================================================
+
+
+[SUMMARY] You've learned how to:
+  1. Connect to CouchDB
+  2. Check if a license exists
+  3. Create a new license
+  4. Retrieve license details
+  5. Search for licenses
+  6. Update license metadata
+  7. View database statistics
+
+Next steps:
+  - Run: python 02_bulk_import.py
+  - Run: python 03_review_workflow.py
+PS C:\Users\Arkajyoti\Downloads\SW-360\license-curation-sample> python 02_bulk_import.py
+
+======================================================================
+  License Curation - Bulk Import Demo
+======================================================================
+
+[INFO] Loading licenses from: C:\Users\Arkajyoti\Downloads\SW-360\license-curation-sample\sample_licenses.json
+[OK] Loaded 10 license(s) from file
+
+[*] Initializing SW360 License Manager...
+[OK] Connected to CouchDB successfully!
+
+
+======================================================================
+  Starting Bulk Import
+======================================================================
+
+[1/10] Processing: BSD-2-Clause
+  [SKIP] License 'BSD-2-Clause' already exists (ID: 1301e495e309a30f9e304974aa00571c)
+[2/10] Processing: BSD-3-Clause
+  [SKIP] License 'BSD-3-Clause' already exists (ID: 1301e495e309a30f9e304974aa00618b)
+[3/10] Processing: ISC
+  [SKIP] License 'ISC' already exists (ID: 1301e495e309a30f9e304974aa0062f3)
+[4/10] Processing: MPL-2.0
+  [SKIP] License 'MPL-2.0' already exists (ID: 1301e495e309a30f9e304974aa00727c)
+[5/10] Processing: EPL-2.0
+  [SKIP] License 'EPL-2.0' already exists (ID: 1301e495e309a30f9e304974aa007713)
+[6/10] Processing: LGPL-2.1
+  [SKIP] License 'LGPL-2.1' already exists (ID: 1301e495e309a30f9e304974aa00839e)
+[7/10] Processing: LGPL-3.0
+  [SKIP] License 'LGPL-3.0' already exists (ID: 1301e495e309a30f9e304974aa008f79)
+[8/10] Processing: CC0-1.0
+  [SKIP] License 'CC0-1.0' already exists (ID: 1301e495e309a30f9e304974aa009342)
+[9/10] Processing: Unlicense
+  [SKIP] License 'Unlicense' already exists (ID: 1301e495e309a30f9e304974aa009a07)
+[10/10] Processing: BSL-1.0
+  [SKIP] License 'BSL-1.0' already exists (ID: 1301e495e309a30f9e304974aa00a7ec)
+
+======================================================================
+  Import Summary
+======================================================================
+
+  Total Processed:  10
+  Created:          0
+  Skipped:          10 (already exist)
+  Failed:           0
+
+======================================================================
+  Current Database State
+======================================================================
+
+  Total Licenses:       13
+  OSI Approved:         11
+  Checked/Reviewed:     13
+  Pending Review:       0
+
+======================================================================
+  All Licenses in Database
+======================================================================
+
+  Found 13 license(s):
+
+   1. [X] [OSI] Apache-2.0           - Apache License 2.0
+   2. [X] [OSI] BSD-2-Clause         - BSD 2-Clause 'Simplified' License
+   3. [X] [OSI] BSD-3-Clause         - BSD 3-Clause 'New' or 'Revised' License
+   4. [X] [OSI] BSL-1.0              - Boost Software License 1.0
+   5. [X]       CC0-1.0              - Creative Commons Zero v1.0 Universal
+   6. [X] [OSI] EPL-2.0              - Eclipse Public License 2.0
+   7. [X] [OSI] GPL-3.0              - GNU General Public License v3.0
+   8. [X] [OSI] ISC                  - ISC License
+   9. [X] [OSI] LGPL-2.1             - GNU Lesser General Public License v2.1
+  10. [X] [OSI] LGPL-3.0             - GNU Lesser General Public License v3.0
+  11. [X] [OSI] MIT                  - MIT License
+  12. [X] [OSI] MPL-2.0              - Mozilla Public License 2.0
+  13. [X]       Unlicense            - The Unlicense
+
+======================================================================
+  Bulk Import Completed!
+======================================================================
+
+
+[NEXT STEPS]
+  - Review unchecked licenses: python 03_review_workflow.py
+  - View in web UI: http://localhost:5984/_utils/#database/sw360db/_all_docs
+  - Query via Python: from sw360_license_manager import SW360LicenseManager
+PS C:\Users\Arkajyoti\Downloads\SW-360\license-curation-sample> python 03_review_workflow.py --auto-approve
+
+======================================================================
+  License Curation - Review Workflow
+======================================================================
+
+[INFO] Running in AUTO-APPROVE mode (demo)
+[INFO] All unchecked licenses will be automatically approved
+
+[*] Initializing SW360 License Manager...
+[OK] Connected to CouchDB successfully!
+
+
+======================================================================
+  Finding Unchecked Licenses
+======================================================================
+
+[INFO] No unchecked licenses found!
+[INFO] All licenses have been reviewed.
+
+  Total Licenses:    13
+  Checked:           13
+
+[SUCCESS] License review process is complete!
+PS C:\Users\Arkajyoti\Downloads\SW-360\license-curation-sample> python 04_generate_report.py
+
+======================================================================
+  License Curation - Generate Report
+======================================================================
+
+[INFO] Report format: text
+
+[*] Initializing SW360 License Manager...
+[OK] Connected to CouchDB successfully!
+
+
+======================================================================
+  SW360 License Curation Report
+======================================================================
+
+  Generated: 2025-11-10 23:16:57
+  Database:  sw360db
+  Source:    http://localhost:5984
+
+
+----------------------------------------------------------------------
+  Summary Statistics
+----------------------------------------------------------------------
+
+  Total Licenses:           13
+  OSI Approved:             11
+  Checked/Reviewed:         13
+  Pending Review:           0
+
+  OSI Approval Rate:        84.6%
+  Review Completion Rate:   100.0%
+
+----------------------------------------------------------------------
+  All Licenses
+----------------------------------------------------------------------
+
+  Total: 13 license(s)
+
+  #    Short Name           Full Name                      OSI   Checked
+  ---- -------------------- ------------------------------ ----- --------
+  1    Apache-2.0           Apache License 2.0             Yes   Yes
+  2    BSD-2-Clause         BSD 2-Clause 'Simplified' Lice Yes   Yes
+  3    BSD-3-Clause         BSD 3-Clause 'New' or 'Revised Yes   Yes
+  4    BSL-1.0              Boost Software License 1.0     Yes   Yes
+  5    CC0-1.0              Creative Commons Zero v1.0 Uni No    Yes
+  6    EPL-2.0              Eclipse Public License 2.0     Yes   Yes
+  7    GPL-3.0              GNU General Public License v3. Yes   Yes
+  8    ISC                  ISC License                    Yes   Yes
+  9    LGPL-2.1             GNU Lesser General Public Lice Yes   Yes
+  10   LGPL-3.0             GNU Lesser General Public Lice Yes   Yes
+  11   MIT                  MIT License                    Yes   Yes
+  12   MPL-2.0              Mozilla Public License 2.0     Yes   Yes
+  13   Unlicense            The Unlicense                  No    Yes
+
+----------------------------------------------------------------------
+  OSI Approved Licenses
+----------------------------------------------------------------------
+
+  Total: 11 license(s)
+
+   1. [X] Apache-2.0           - Apache License 2.0
+   2. [X] BSD-2-Clause         - BSD 2-Clause 'Simplified' License
+   3. [X] BSD-3-Clause         - BSD 3-Clause 'New' or 'Revised' License
+   4. [X] BSL-1.0              - Boost Software License 1.0
+   5. [X] EPL-2.0              - Eclipse Public License 2.0
+   6. [X] GPL-3.0              - GNU General Public License v3.0
+   7. [X] ISC                  - ISC License
+   8. [X] LGPL-2.1             - GNU Lesser General Public License v2.1
+   9. [X] LGPL-3.0             - GNU Lesser General Public License v3.0
+  10. [X] MIT                  - MIT License
+  11. [X] MPL-2.0              - Mozilla Public License 2.0
+
+----------------------------------------------------------------------
+  Pending Review
+----------------------------------------------------------------------
+
+  [OK] No licenses pending review!
+
+----------------------------------------------------------------------
+  Checked/Reviewed Licenses
+----------------------------------------------------------------------
+
+  Total: 13 license(s) reviewed and approved
+
+   1. [OSI] Apache-2.0           - Apache License 2.0
+   2. [OSI] BSD-2-Clause         - BSD 2-Clause 'Simplified' License
+   3. [OSI] BSD-3-Clause         - BSD 3-Clause 'New' or 'Revised' License
+   4. [OSI] BSL-1.0              - Boost Software License 1.0
+   5.       CC0-1.0              - Creative Commons Zero v1.0 Universal
+   6. [OSI] EPL-2.0              - Eclipse Public License 2.0
+   7. [OSI] GPL-3.0              - GNU General Public License v3.0
+   8. [OSI] ISC                  - ISC License
+   9. [OSI] LGPL-2.1             - GNU Lesser General Public License v2.1
+  10. [OSI] LGPL-3.0             - GNU Lesser General Public License v3.0
+  11. [OSI] MIT                  - MIT License
+  12. [OSI] MPL-2.0              - Mozilla Public License 2.0
+  13.       Unlicense            - The Unlicense
+
+======================================================================
+  End of Report
+======================================================================
+
+
+[SUCCESS] Report generation completed!
+PS C:\Users\Arkajyoti\Downloads\SW-360\license-curation-sample> python 04_generate_report.py --format json
+
+======================================================================
+  License Curation - Generate Report
+======================================================================
+
+[INFO] Report format: json
+
+[*] Initializing SW360 License Manager...
+[OK] Connected to CouchDB successfully!
+
+
+======================================================================
+  Exporting to JSON
+======================================================================
+
+[OK] Report exported to: license_report_20251110_231728.json
+[OK] 13 license(s) exported
+
+[INFO] View file: license_report_20251110_231728.json
+
+[SUCCESS] Report generation completed!
